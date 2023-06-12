@@ -1,7 +1,6 @@
 ﻿using Catalog.API.Data;
 using Catalog.API.Entities;
 using MongoDB.Driver;
-using System.Xml.Linq;
 
 namespace Catalog.API.Repositories;
 
