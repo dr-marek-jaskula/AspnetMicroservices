@@ -16,5 +16,6 @@
     <None Include=".dockerignore" />
     <None Include="ReadMe.DockerCommands.md" />
     <None Include="ReadMe.DockerCompose.md" />
+    <None Include="ReadMe.Portainer.md" />
   </ItemGroup>
 </Project>
