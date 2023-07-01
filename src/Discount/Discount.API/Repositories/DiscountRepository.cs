@@ -42,7 +42,7 @@ public sealed class DiscountRepository : IDiscountRepository
 
         var affected = await connection.ExecuteAsync
         (
-            "INSERT INTO Coupon (ProductName, Discount, Amount) VALUES (@ProductName, @Description, @Amount)",
+            "INSERT INTO Coupon (ProductName, Description, Amount) VALUES (@ProductName, @Description, @Amount)",
             new { coupon.ProductName, coupon.Description, coupon.Amount }
         );
 
@@ -60,7 +60,7 @@ public sealed class DiscountRepository : IDiscountRepository
 
         var affected = await connection.ExecuteAsync
         (
-            "UPDATE Coupon SET ProductName = @ProductName, Discount = @Description, Amount = @Amount WHERE Id = @Id",
+            "UPDATE Coupon SET ProductName = @ProductName, Description = @Description, Amount = @Amount WHERE Id = @Id",
             new { coupon.ProductName, coupon.Description, coupon.Amount, coupon.Id }
         );
 
@@ -78,7 +78,7 @@ public sealed class DiscountRepository : IDiscountRepository
 
         var affected = await connection.ExecuteAsync
         (
-            "DELETE Coupon WHERE ProductName = @ProductName",
+            "DELETE FROM Coupon WHERE ProductName = @ProductName",
             new { ProductName = productName }
         );
 
