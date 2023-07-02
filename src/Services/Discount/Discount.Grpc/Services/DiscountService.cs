@@ -8,10 +8,12 @@ namespace Discount.Grpc.Services;
 public sealed class DiscountService : DiscountProtoService.DiscountProtoServiceBase
 {
     private readonly IDiscountRepository _discountRepository;
+    private readonly ILogger<DiscountService> _logger;
 
-    public DiscountService(IDiscountRepository discountRepository)
+    public DiscountService(IDiscountRepository discountRepository, ILogger<DiscountService> logger)
     {
         _discountRepository = discountRepository;
+        _logger = logger;
     }
 
     public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
@@ -23,6 +25,7 @@ public sealed class DiscountService : DiscountProtoService.DiscountProtoServiceB
             throw new RpcException(new Status(StatusCode.NotFound, $"Discount with ProductName={request.ProductName} is not found."));
         }
 
+        _logger.LogInformation("Discount is retrieved for ProductName: {productName}, Amount: {amount}", coupon.ProductName, coupon.Amount);
         return coupon.ToCouponModel();
     }
 
@@ -30,6 +33,7 @@ public sealed class DiscountService : DiscountProtoService.DiscountProtoServiceB
     {
         var coupon = request.Coupon.ToCoupon();
         await _discountRepository.CreateDiscount(coupon);
+        _logger.LogInformation("Discount is successfully created. ProductName : {ProductName}", coupon.ProductName);
         return coupon.ToCouponModel();
     }
 
@@ -37,6 +41,7 @@ public sealed class DiscountService : DiscountProtoService.DiscountProtoServiceB
     {
         var coupon = request.Coupon.ToCoupon();
         await _discountRepository.UpdateDiscount(coupon);
+        _logger.LogInformation("Discount is successfully updated. ProductName : {ProductName}", coupon.ProductName);
         return coupon.ToCouponModel();
     }
 

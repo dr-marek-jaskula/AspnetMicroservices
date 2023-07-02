@@ -14,3 +14,6 @@ Run with override
 
 And stop with override
 > docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
+
+Recreate the images (if some changes were made, rebuild images)
+> docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build

@@ -8,6 +8,7 @@ For c# the required package is "Grpc.AspNetCore"
 
 Important configuration in .cproj file is 
 
+This app is will be a Server, so will not call gRPC bo other app will call it using gRPC therefore it is "Server"
 ```cproj
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
@@ -85,3 +86,5 @@ Examine if the new classes are created
 ```csharp
 app.MapGrpcService<DiscountService>();
 ```
+
+
