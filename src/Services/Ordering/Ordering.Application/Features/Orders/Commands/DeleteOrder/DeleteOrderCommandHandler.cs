@@ -29,6 +29,5 @@ public sealed class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderComma
         }
 
         await _orderRepository.DeleteAsync(orderToDelete);
-        throw new NotImplementedException();
     }
 }

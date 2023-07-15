@@ -10,6 +10,4 @@ public sealed class GetOrdersListQuery : IRequest<List<OrderVm>>
     {
         UserName = userName;
     }
-
-
 }
