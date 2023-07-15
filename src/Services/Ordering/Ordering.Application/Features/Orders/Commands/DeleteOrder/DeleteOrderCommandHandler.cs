@@ -29,5 +29,6 @@ public sealed class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderComma
         }
 
         await _orderRepository.DeleteAsync(orderToDelete);
+        _logger.LogInformation($"Order with id {command.Id} was deleted");
     }
 }

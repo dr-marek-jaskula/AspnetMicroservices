@@ -28,6 +28,7 @@ public sealed class OrderController : ControllerBase
         return Ok(orders);
     }
 
+    //Test purpose, proper approach is in BasketCheckoutConsumer
     [HttpPost(Name = "CheckoutOrder")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)

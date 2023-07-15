@@ -17,3 +17,6 @@ And stop with override
 
 Recreate the images (if some changes were made, rebuild images)
 > docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
+
+Run in detached mode (in the background) which is preferred: 
+> docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
